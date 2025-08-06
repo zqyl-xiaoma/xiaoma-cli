@@ -50,7 +50,7 @@ class ConfigLoader {
               agents.push({
                 id: agentId,
                 name: agentConfig.title || agentConfig.name || agentId,
-                file: `bmad-core/agents/${entry.name}`,
+                file: `xiaoma-core/agents/${entry.name}`,
                 description: agentConfig.whenToUse || 'No description available'
               });
             }
@@ -93,7 +93,7 @@ class ConfigLoader {
               description: config['short-title'] || config.description || 'No description available',
               fullDescription: config.description || config['short-title'] || 'No description available',
               version: config.version || '1.0.0',
-              author: config.author || 'BMad Team',
+              author: config.author || 'XiaoMa Team',
               packPath: packPath,
               dependencies: config.dependencies?.agents || []
             });
@@ -113,7 +113,7 @@ class ConfigLoader {
               description: 'No description available',
               fullDescription: 'No description available',
               version: '1.0.0',
-              author: 'BMad Team',
+              author: 'XiaoMa Team',
               packPath: packPath,
               dependencies: []
             });
@@ -144,7 +144,7 @@ class ConfigLoader {
     
     // Add all resolved resources
     for (const resource of agentDeps.resources) {
-      const filePath = `.bmad-core/${resource.type}/${resource.id}.md`;
+      const filePath = `.xiaoma-core/${resource.type}/${resource.id}.md`;
       if (!depPaths.includes(filePath)) {
         depPaths.push(filePath);
       }
@@ -160,8 +160,8 @@ class ConfigLoader {
   }
 
   getBmadCorePath() {
-    // Get the path to bmad-core relative to the installer (now under tools)
-    return path.join(__dirname, '..', '..', '..', 'bmad-core');
+    // Get the path to xiaoma-core relative to the installer (now under tools)
+    return path.join(__dirname, '..', '..', '..', 'xiaoma-core');
   }
 
   getDistPath() {
@@ -225,11 +225,11 @@ class ConfigLoader {
       const depPaths = [];
       
       // Add team config file
-      depPaths.push(`.bmad-core/agent-teams/${teamId}.yaml`);
+      depPaths.push(`.xiaoma-core/agent-teams/${teamId}.yaml`);
       
       // Add all agents
       for (const agent of teamDeps.agents) {
-        const filePath = `.bmad-core/agents/${agent.id}.md`;
+        const filePath = `.xiaoma-core/agents/${agent.id}.md`;
         if (!depPaths.includes(filePath)) {
           depPaths.push(filePath);
         }
@@ -237,7 +237,7 @@ class ConfigLoader {
       
       // Add all resolved resources
       for (const resource of teamDeps.resources) {
-        const filePath = `.bmad-core/${resource.type}/${resource.id}.${resource.type === 'workflows' ? 'yaml' : 'md'}`;
+        const filePath = `.xiaoma-core/${resource.type}/${resource.id}.${resource.type === 'workflows' ? 'yaml' : 'md'}`;
         if (!depPaths.includes(filePath)) {
           depPaths.push(filePath);
         }

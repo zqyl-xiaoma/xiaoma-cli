@@ -9,7 +9,7 @@ const resourceLocator = require('./resource-locator');
 
 class FileManager {
   constructor() {
-    this.manifestDir = ".bmad-core";
+    this.manifestDir = ".xiaoma-core";
     this.manifestFile = "install-manifest.yaml";
   }
 
@@ -305,7 +305,7 @@ class FileManager {
   }
 
   async modifyCoreConfig(installDir, config) {
-    const coreConfigPath = path.join(installDir, '.bmad-core', 'core-config.yaml');
+    const coreConfigPath = path.join(installDir, '.xiaoma-core', 'core-config.yaml');
     
     try {
       // Read the existing core-config.yaml

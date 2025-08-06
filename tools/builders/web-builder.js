@@ -21,7 +21,7 @@ class WebBuilder {
     return yaml.load(content);
   }
 
-  convertToWebPath(filePath, bundleRoot = 'bmad-core') {
+  convertToWebPath(filePath, bundleRoot = 'xiaoma-core') {
     // Convert absolute paths to web bundle paths with dot prefix
     // All resources get installed under the bundle root, so use that path
     const relativePath = path.relative(this.rootDir, filePath);
@@ -32,7 +32,7 @@ class WebBuilder {
       // For expansion packs, remove 'expansion-packs/packname' and use the rest
       resourcePath = pathParts.slice(2).join('/');
     } else {
-      // For bmad-core, common, etc., remove the first part
+      // For xiaoma-core, common, etc., remove the first part
       resourcePath = pathParts.slice(1).join('/');
     }
     
@@ -41,16 +41,16 @@ class WebBuilder {
 
   generateWebInstructions(bundleType, packName = null) {
     // Generate dynamic web instructions based on bundle type
-    const rootExample = packName ? `.${packName}` : '.bmad-core';
-    const examplePath = packName ? `.${packName}/folder/filename.md` : '.bmad-core/folder/filename.md';
-    const personasExample = packName ? `.${packName}/personas/analyst.md` : '.bmad-core/personas/analyst.md';
-    const tasksExample = packName ? `.${packName}/tasks/create-story.md` : '.bmad-core/tasks/create-story.md';
-    const utilsExample = packName ? `.${packName}/utils/template-format.md` : '.bmad-core/utils/template-format.md';
-    const tasksRef = packName ? `.${packName}/tasks/create-story.md` : '.bmad-core/tasks/create-story.md';
+    const rootExample = packName ? `.${packName}` : '.xiaoma-core';
+    const examplePath = packName ? `.${packName}/folder/filename.md` : '.xiaoma-core/folder/filename.md';
+    const personasExample = packName ? `.${packName}/personas/analyst.md` : '.xiaoma-core/personas/analyst.md';
+    const tasksExample = packName ? `.${packName}/tasks/create-story.md` : '.xiaoma-core/tasks/create-story.md';
+    const utilsExample = packName ? `.${packName}/utils/template-format.md` : '.xiaoma-core/utils/template-format.md';
+    const tasksRef = packName ? `.${packName}/tasks/create-story.md` : '.xiaoma-core/tasks/create-story.md';
 
     return `# Web Agent Bundle Instructions
 
-You are now operating as a specialized AI agent from the BMad-Method framework. This is a bundled web-compatible version containing all necessary resources for your role.
+You are now operating as a specialized AI agent from the XiaoMa-Method framework. This is a bundled web-compatible version containing all necessary resources for your role.
 
 ## Important Instructions
 
@@ -84,7 +84,7 @@ These references map directly to bundle sections:
 
 3. **Execution Context**: You are operating in a web environment. All your capabilities and knowledge are contained within this bundle. Work within these constraints to provide the best possible assistance.
 
-4. **Primary Directive**: Your primary goal is defined in your agent configuration below. Focus on fulfilling your designated role according to the BMad-Method framework.
+4. **Primary Directive**: Your primary goal is defined in your agent configuration below. Focus on fulfilling your designated role according to the XiaoMa-Method framework.
 
 ---
 
@@ -148,13 +148,13 @@ These references map directly to bundle sections:
     const sections = [template];
 
     // Add agent configuration
-    const agentPath = this.convertToWebPath(dependencies.agent.path, 'bmad-core');
-    sections.push(this.formatSection(agentPath, dependencies.agent.content, 'bmad-core'));
+    const agentPath = this.convertToWebPath(dependencies.agent.path, 'xiaoma-core');
+    sections.push(this.formatSection(agentPath, dependencies.agent.content, 'xiaoma-core'));
 
     // Add all dependencies
     for (const resource of dependencies.resources) {
-      const resourcePath = this.convertToWebPath(resource.path, 'bmad-core');
-      sections.push(this.formatSection(resourcePath, resource.content, 'bmad-core'));
+      const resourcePath = this.convertToWebPath(resource.path, 'xiaoma-core');
+      sections.push(this.formatSection(resourcePath, resource.content, 'xiaoma-core'));
     }
 
     return sections.join("\n");
@@ -167,19 +167,19 @@ These references map directly to bundle sections:
     const sections = [template];
 
     // Add team configuration
-    const teamPath = this.convertToWebPath(dependencies.team.path, 'bmad-core');
-    sections.push(this.formatSection(teamPath, dependencies.team.content, 'bmad-core'));
+    const teamPath = this.convertToWebPath(dependencies.team.path, 'xiaoma-core');
+    sections.push(this.formatSection(teamPath, dependencies.team.content, 'xiaoma-core'));
 
     // Add all agents
     for (const agent of dependencies.agents) {
-      const agentPath = this.convertToWebPath(agent.path, 'bmad-core');
-      sections.push(this.formatSection(agentPath, agent.content, 'bmad-core'));
+      const agentPath = this.convertToWebPath(agent.path, 'xiaoma-core');
+      sections.push(this.formatSection(agentPath, agent.content, 'xiaoma-core'));
     }
 
     // Add all deduplicated resources
     for (const resource of dependencies.resources) {
-      const resourcePath = this.convertToWebPath(resource.path, 'bmad-core');
-      sections.push(this.formatSection(resourcePath, resource.content, 'bmad-core'));
+      const resourcePath = this.convertToWebPath(resource.path, 'xiaoma-core');
+      sections.push(this.formatSection(resourcePath, resource.content, 'xiaoma-core'));
     }
 
     return sections.join("\n");
@@ -237,7 +237,7 @@ These references map directly to bundle sections:
     }
   }
 
-  formatSection(path, content, bundleRoot = 'bmad-core') {
+  formatSection(path, content, bundleRoot = 'xiaoma-core') {
     const separator = "====================";
 
     // Process agent content if this is an agent file
@@ -412,7 +412,7 @@ These references map directly to bundle sections:
                 if (!found) {
                   const corePath = path.join(
                     this.rootDir,
-                    "bmad-core",
+                    "xiaoma-core",
                     resourceType,
                     resourceName
                   );
@@ -510,10 +510,10 @@ These references map directly to bundle sections:
     // Process all agents listed in team configuration
     const agentsToProcess = teamConfig.agents || [];
 
-    // Ensure bmad-orchestrator is always included for teams
-    if (!agentsToProcess.includes("bmad-orchestrator")) {
-      console.warn(`    ⚠ Team ${teamFileName} missing bmad-orchestrator, adding automatically`);
-      agentsToProcess.unshift("bmad-orchestrator");
+    // Ensure xiaoma-orchestrator is always included for teams
+    if (!agentsToProcess.includes("xiaoma-orchestrator")) {
+      console.warn(`    ⚠ Team ${teamFileName} missing xiaoma-orchestrator, adding automatically`);
+      agentsToProcess.unshift("xiaoma-orchestrator");
     }
 
     // Track all dependencies from all agents (deduplicated)
@@ -549,9 +549,9 @@ These references map directly to bundle sections:
           }
         }
       } else {
-        // Use core BMad version
+        // Use core XiaoMa version
         try {
-          const coreAgentPath = path.join(this.rootDir, "bmad-core", "agents", `${agentId}.md`);
+          const coreAgentPath = path.join(this.rootDir, "xiaoma-core", "agents", `${agentId}.md`);
           const coreAgentContent = await fs.readFile(coreAgentPath, "utf8");
           const coreAgentWebPath = this.convertToWebPath(coreAgentPath, packName);
           sections.push(this.formatSection(coreAgentWebPath, coreAgentContent, packName));
@@ -605,7 +605,7 @@ These references map directly to bundle sections:
 
       // If not found in expansion pack (or doesn't exist there), try core
       if (!found) {
-        const corePath = path.join(this.rootDir, "bmad-core", dep.type, dep.name);
+        const corePath = path.join(this.rootDir, "xiaoma-core", dep.type, dep.name);
         try {
           const content = await fs.readFile(corePath, "utf8");
           const coreWebPath = this.convertToWebPath(corePath, packName);

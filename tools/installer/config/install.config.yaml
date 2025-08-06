@@ -1,9 +1,9 @@
 installation-options:
   full:
-    name: Complete BMad Core
-    description: Copy the entire .bmad-core folder with all agents, templates, and tools
+    name: Complete XiaoMa Core
+    description: Copy the entire .xiaoma-core folder with all agents, templates, and tools
     action: copy-folder
-    source: bmad-core
+    source: xiaoma-core
   single-agent:
     name: Single Agent
     description: Select and install a single agent with its dependencies
@@ -15,17 +15,17 @@ ide-configurations:
     format: multi-file
     command-suffix: .mdc
     instructions: |
-      # To use BMad agents in Cursor:
+      # To use XiaoMa agents in Cursor:
       # 1. Press Ctrl+L (Cmd+L on Mac) to open the chat
       # 2. Type @agent-name (e.g., "@dev", "@pm", "@architect")
       # 3. The agent will adopt that persona for the conversation
   claude-code:
     name: Claude Code
-    rule-dir: .claude/commands/BMad/
+    rule-dir: .claude/commands/XiaoMa/
     format: multi-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents in Claude Code:
+      # To use XiaoMa agents in Claude Code:
       # 1. Type /agent-name (e.g., "/dev", "/pm", "/architect")
       # 2. Claude will switch to that agent's persona
   windsurf:
@@ -34,7 +34,7 @@ ide-configurations:
     format: multi-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents in Windsurf:
+      # To use XiaoMa agents in Windsurf:
       # 1. Type @agent-name (e.g., "@dev", "@pm")
       # 2. Windsurf will adopt that agent's persona
   trae:
@@ -43,7 +43,7 @@ ide-configurations:
     format: multi-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents in Trae:
+      # To use XiaoMa agents in Trae:
       # 1. Type @agent-name (e.g., "@dev", "@pm", "@architect")
       # 2. Trae will adopt that agent's persona
   roo:
@@ -51,9 +51,9 @@ ide-configurations:
     format: custom-modes
     file: .roomodes
     instructions: |
-      # To use BMad agents in Roo Code:
+      # To use XiaoMa agents in Roo Code:
       # 1. Open the mode selector (usually in the status bar)
-      # 2. Select any bmad-{agent} mode (e.g., "bmad-dev", "bmad-pm")
+      # 2. Select any xiaoma-{agent} mode (e.g., "xiaoma-dev", "xiaoma-pm")
       # 3. The AI will adopt that agent's full personality and capabilities
   cline:
     name: Cline
@@ -61,19 +61,19 @@ ide-configurations:
     format: multi-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents in Cline:
+      # To use XiaoMa agents in Cline:
       # 1. Open the Cline chat panel in VS Code
       # 2. Type @agent-name (e.g., "@dev", "@pm", "@architect")
       # 3. The agent will adopt that persona for the conversation
       # 4. Rules are stored in .clinerules/ directory in your project
   gemini:
     name: Gemini CLI
-    rule-dir: .gemini/bmad-method/
+    rule-dir: .gemini/xiaoma-method/
     format: single-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents with the Gemini CLI:
-      # 1. The installer creates a .gemini/bmad-method/ directory in your project.
+      # To use XiaoMa agents with the Gemini CLI:
+      # 1. The installer creates a .gemini/xiaoma-method/ directory in your project.
       # 2. It concatenates all agent files into a single GEMINI.md file.
       # 3. Simply mention the agent in your prompt (e.g., "As *dev, ...").
       # 4. The Gemini CLI will automatically have the context for that agent.
@@ -83,7 +83,7 @@ ide-configurations:
     format: multi-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents with Github Copilot:
+      # To use XiaoMa agents with Github Copilot:
       # 1. The installer creates a .github/chatmodes/ directory in your project
       # 2. Open the Chat view (`⌃⌘I` on Mac, `Ctrl+Alt+I` on Windows/Linux) and select **Agent** from the chat mode selector.
       # 3. The agent will adopt that persona for the conversation
@@ -95,19 +95,19 @@ ide-configurations:
     format: custom-modes
     file: .kilocodemodes
     instructions: |
-      # To use BMAD agents in Kilo Code:
+      # To use XIAOMA agents in Kilo Code:
       # 1. Open the mode selector in VSCode
-      # 2. Select a bmad-{agent} mode (e.g. "bmad-dev")
+      # 2. Select a xiaoma-{agent} mode (e.g. "xiaoma-dev")
       # 3. The AI adopts that agent's persona and capabilities
 
   qwen-code:
     name: Qwen Code
-    rule-dir: .qwen/bmad-method/
+    rule-dir: .qwen/xiaoma-method/
     format: single-file
     command-suffix: .md
     instructions: |
-      # To use BMad agents with Qwen Code:
-      # 1. The installer creates a .qwen/bmad-method/ directory in your project.
+      # To use XiaoMa agents with Qwen Code:
+      # 1. The installer creates a .qwen/xiaoma-method/ directory in your project.
       # 2. It concatenates all agent files into a single QWEN.md file.
       # 3. Simply mention the agent in your prompt (e.g., "As *dev, ...").
       # 4. The Qwen Code CLI will automatically have the context for that agent.

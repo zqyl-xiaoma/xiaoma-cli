@@ -89,11 +89,18 @@ class IdeSetup extends BaseIdeSetup {
   }
 
   async setupClaudeCode(installDir, selectedAgent) {
-    // Setup bmad-core commands
+    // Clean up old BMad commands directory if it exists
+    const oldBmadCommandsDir = path.join(installDir, ".claude", "commands", "BMad");
+    if (await fileManager.pathExists(oldBmadCommandsDir)) {
+      await fileManager.removeDirectory(oldBmadCommandsDir);
+      console.log(chalk.dim("  Removed old BMad commands directory"));
+    }
+
+    // Setup xiaoma-core commands
     const coreSlashPrefix = await this.getCoreSlashPrefix(installDir);
     const coreAgents = selectedAgent ? [selectedAgent] : await this.getCoreAgentIds(installDir);
     const coreTasks = await this.getCoreTaskIds(installDir);
-    await this.setupClaudeCodeForPackage(installDir, "core", coreSlashPrefix, coreAgents, coreTasks, ".bmad-core");
+    await this.setupClaudeCodeForPackage(installDir, "core", coreSlashPrefix, coreAgents, coreTasks, ".xiaoma-core");
 
     // Setup expansion pack commands
     const expansionPacks = await this.getInstalledExpansionPacks(installDir);
@@ -304,7 +311,7 @@ class IdeSetup extends BaseIdeSetup {
   async findAgentPath(agentId, installDir) {
     // Try to find the agent file in various locations
     const possiblePaths = [
-      path.join(installDir, ".bmad-core", "agents", `${agentId}.md`),
+      path.join(installDir, ".xiaoma-core", "agents", `${agentId}.md`),
       path.join(installDir, "agents", `${agentId}.md`)
     ];
     
@@ -328,8 +335,8 @@ class IdeSetup extends BaseIdeSetup {
     const glob = require("glob");
     const allAgentIds = [];
     
-    // Check core agents in .bmad-core or root
-    let agentsDir = path.join(installDir, ".bmad-core", "agents");
+    // Check core agents in .xiaoma-core or root
+    let agentsDir = path.join(installDir, ".xiaoma-core", "agents");
     if (!(await fileManager.pathExists(agentsDir))) {
       agentsDir = path.join(installDir, "agents");
     }
@@ -354,10 +361,10 @@ class IdeSetup extends BaseIdeSetup {
   async getCoreAgentIds(installDir) {
     const allAgentIds = [];
     
-    // Check core agents in .bmad-core or root only
-    let agentsDir = path.join(installDir, ".bmad-core", "agents");
+    // Check core agents in .xiaoma-core or root only
+    let agentsDir = path.join(installDir, ".xiaoma-core", "agents");
     if (!(await fileManager.pathExists(agentsDir))) {
-      agentsDir = path.join(installDir, "bmad-core", "agents");
+      agentsDir = path.join(installDir, "xiaoma-core", "agents");
     }
     
     if (await fileManager.pathExists(agentsDir)) {
@@ -372,10 +379,10 @@ class IdeSetup extends BaseIdeSetup {
   async getCoreTaskIds(installDir) {
     const allTaskIds = [];
     
-    // Check core tasks in .bmad-core or root only
-    let tasksDir = path.join(installDir, ".bmad-core", "tasks");
+    // Check core tasks in .xiaoma-core or root only
+    let tasksDir = path.join(installDir, ".xiaoma-core", "tasks");
     if (!(await fileManager.pathExists(tasksDir))) {
-      tasksDir = path.join(installDir, "bmad-core", "tasks");
+      tasksDir = path.join(installDir, "xiaoma-core", "tasks");
     }
     
     if (await fileManager.pathExists(tasksDir)) {
@@ -397,7 +404,7 @@ class IdeSetup extends BaseIdeSetup {
   async getAgentTitle(agentId, installDir) {
     // Try to find the agent file in various locations
     const possiblePaths = [
-      path.join(installDir, ".bmad-core", "agents", `${agentId}.md`),
+      path.join(installDir, ".xiaoma-core", "agents", `${agentId}.md`),
       path.join(installDir, "agents", `${agentId}.md`)
     ];
     
@@ -437,10 +444,10 @@ class IdeSetup extends BaseIdeSetup {
     const glob = require("glob");
     const allTaskIds = [];
     
-    // Check core tasks in .bmad-core or root
-    let tasksDir = path.join(installDir, ".bmad-core", "tasks");
+    // Check core tasks in .xiaoma-core or root
+    let tasksDir = path.join(installDir, ".xiaoma-core", "tasks");
     if (!(await fileManager.pathExists(tasksDir))) {
-      tasksDir = path.join(installDir, "bmad-core", "tasks");
+      tasksDir = path.join(installDir, "xiaoma-core", "tasks");
     }
     
     if (await fileManager.pathExists(tasksDir)) {
@@ -481,8 +488,8 @@ class IdeSetup extends BaseIdeSetup {
   async findTaskPath(taskId, installDir) {
     // Try to find the task file in various locations
     const possiblePaths = [
-      path.join(installDir, ".bmad-core", "tasks", `${taskId}.md`),
-      path.join(installDir, "bmad-core", "tasks", `${taskId}.md`),
+      path.join(installDir, ".xiaoma-core", "tasks", `${taskId}.md`),
+      path.join(installDir, "xiaoma-core", "tasks", `${taskId}.md`),
       path.join(installDir, "common", "tasks", `${taskId}.md`)
     ];
     
@@ -515,24 +522,24 @@ class IdeSetup extends BaseIdeSetup {
 
   async getCoreSlashPrefix(installDir) {
     try {
-      const coreConfigPath = path.join(installDir, ".bmad-core", "core-config.yaml");
+      const coreConfigPath = path.join(installDir, ".xiaoma-core", "core-config.yaml");
       if (!(await fileManager.pathExists(coreConfigPath))) {
-        // Try bmad-core directory
-        const altConfigPath = path.join(installDir, "bmad-core", "core-config.yaml");
+        // Try xiaoma-core directory
+        const altConfigPath = path.join(installDir, "xiaoma-core", "core-config.yaml");
         if (await fileManager.pathExists(altConfigPath)) {
           const configContent = await fileManager.readFile(altConfigPath);
           const config = yaml.load(configContent);
-          return config.slashPrefix || "BMad";
+          return config.slashPrefix || "XiaoMa";
         }
-        return "BMad"; // fallback
+        return "XiaoMa"; // fallback
       }
       
       const configContent = await fileManager.readFile(coreConfigPath);
       const config = yaml.load(configContent);
-      return config.slashPrefix || "BMad";
+      return config.slashPrefix || "XiaoMa";
     } catch (error) {
-      console.warn(`Failed to read core slashPrefix, using default 'BMad': ${error.message}`);
-      return "BMad";
+      console.warn(`Failed to read core slashPrefix, using default 'XiaoMa': ${error.message}`);
+      return "XiaoMa";
     }
   }
 
@@ -541,10 +548,10 @@ class IdeSetup extends BaseIdeSetup {
     
     // Check for dot-prefixed expansion packs in install directory
     const glob = require("glob");
-    const dotExpansions = glob.sync(".bmad-*", { cwd: installDir });
+    const dotExpansions = glob.sync(".xiaoma-*", { cwd: installDir });
     
     for (const dotExpansion of dotExpansions) {
-      if (dotExpansion !== ".bmad-core") {
+      if (dotExpansion !== ".xiaoma-core") {
         const packPath = path.join(installDir, dotExpansion);
         const packName = dotExpansion.substring(1); // remove the dot
         expansionPacks.push({
@@ -861,7 +868,7 @@ class IdeSetup extends BaseIdeSetup {
         }
         mdContent += "\n```\n\n";
         mdContent += "## Project Standards\n\n";
-        mdContent += `- Always maintain consistency with project documentation in .bmad-core/\n`;
+        mdContent += `- Always maintain consistency with project documentation in .xiaoma-core/\n`;
         mdContent += `- Follow the agent's specific guidelines and constraints\n`;
         mdContent += `- Update relevant project files when making changes\n`;
         const relativePath = path.relative(installDir, agentPath).replace(/\\/g, '/');
@@ -881,7 +888,7 @@ class IdeSetup extends BaseIdeSetup {
 
   async setupGeminiCli(installDir) {
     const geminiDir = path.join(installDir, ".gemini");
-    const bmadMethodDir = path.join(geminiDir, "bmad-method");
+    const bmadMethodDir = path.join(geminiDir, "xiaoma-web");
     await fileManager.ensureDirectory(bmadMethodDir);
 
     // Update logic for existing settings.json
@@ -981,7 +988,7 @@ class IdeSetup extends BaseIdeSetup {
 
   async setupQwenCode(installDir, selectedAgent) {
     const qwenDir = path.join(installDir, ".qwen");
-    const bmadMethodDir = path.join(qwenDir, "bmad-method");
+    const bmadMethodDir = path.join(qwenDir, "xiaoma-web");
     await fileManager.ensureDirectory(bmadMethodDir);
 
     // Update logic for existing settings.json
@@ -1122,7 +1129,7 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
     }
 
     console.log(chalk.green(`\n✓ Github Copilot setup complete!`));
-    console.log(chalk.dim(`You can now find the BMad agents in the Chat view's mode selector.`));
+    console.log(chalk.dim(`You can now find the XiaoMa agents in the Chat view's mode selector.`));
 
     return true;
   }
@@ -1139,7 +1146,7 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
       try {
         const existingContent = await fileManager.readFile(settingsPath);
         existingSettings = JSON.parse(existingContent);
-        console.log(chalk.yellow("Found existing .vscode/settings.json. Merging BMad settings..."));
+        console.log(chalk.yellow("Found existing .vscode/settings.json. Merging XiaoMa settings..."));
       } catch (error) {
         console.warn(chalk.yellow("Could not parse existing settings.json. Creating new one."));
         existingSettings = {};
@@ -1155,7 +1162,7 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
       // Clear any previous output and add spacing to avoid conflicts with loaders
       console.log('\n'.repeat(2));
       console.log(chalk.blue("🔧 Github Copilot Agent Settings Configuration"));
-      console.log(chalk.dim("BMad works best with specific VS Code settings for optimal agent experience."));
+      console.log(chalk.dim("XiaoMa works best with specific VS Code settings for optimal agent experience."));
       console.log(''); // Add extra spacing
       
       const response = await inquirer.prompt([
@@ -1207,7 +1214,7 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
         "github.copilot.chat.agent.autoFix": true,
         "chat.tools.autoApprove": false
       };
-      console.log(chalk.green("✓ Using recommended BMad defaults for Github Copilot settings"));
+      console.log(chalk.green("✓ Using recommended XiaoMa defaults for Github Copilot settings"));
     } else {
       // Manual configuration
       console.log(chalk.blue("\n📋 Let's configure each setting for your preferences:"));
@@ -1265,7 +1272,7 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
       }
       
       bmadSettings = {
-        "chat.agent.enabled": true, // Always enabled - required for BMad agents
+        "chat.agent.enabled": true, // Always enabled - required for XiaoMa agents
         "chat.agent.maxRequests": parseInt(manualSettings.maxRequests),
         "github.copilot.chat.agent.runTasks": manualSettings.runTasks,
         "chat.mcp.discovery.enabled": manualSettings.mcpDiscovery,

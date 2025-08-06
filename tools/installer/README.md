@@ -1,4 +1,4 @@
-# BMad Method Installer
+# XiaoMa Web Installer
 
 ## Usage
 

@@ -4,7 +4,7 @@ Thank you for considering contributing to this project! This document outlines t
 
 🆕 **New to GitHub or pull requests?** Check out our [beginner-friendly Pull Request Guide](docs/how-to-contribute-with-pull-requests.md) first!
 
-📋 **Before contributing**, please read our [Guiding Principles](docs/GUIDING-PRINCIPLES.md) to understand the BMad Method's core philosophy and architectural decisions.
+📋 **Before contributing**, please read our [Guiding Principles](docs/GUIDING-PRINCIPLES.md) to understand the XiaoMa Method's core philosophy and architectural decisions.
 
 Also note, we use the discussions feature in GitHub to have a community to discuss potential ideas, uses, additions and enhancements.
 
@@ -26,7 +26,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
    - Clear bug description
    - Steps to reproduce
    - Expected vs actual behavior
-   - Model/IDE/BMad version details
+   - Model/IDE/XiaoMa version details
    - Screenshots or links if applicable
 3. **Consider discussing in Discord** (#bugs-issues channel) for quick help
 4. **Indicate if you're working on a fix** to avoid duplicate efforts
@@ -40,7 +40,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
    - Describing the problem it solves
    - Explaining your solution
    - Listing alternatives considered
-4. **Be specific** about why this feature would benefit the BMad community
+4. **Be specific** about why this feature would benefit the XiaoMa community
 
 ### Pull Request Process
 

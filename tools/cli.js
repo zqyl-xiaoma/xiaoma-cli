@@ -9,8 +9,8 @@ const path = require('path');
 const program = new Command();
 
 program
-  .name('bmad-build')
-  .description('BMad-Method build tool for creating web bundles')
+  .name('xiaoma-build')
+  .description('XiaoMa-Method build tool for creating web bundles')
   .version('4.0.0');
 
 program
@@ -136,7 +136,7 @@ program
 
 program
   .command('upgrade')
-  .description('Upgrade a BMad-Method V3 project to V4')
+  .description('Upgrade a XiaoMa-Method V3 project to V4')
   .option('-p, --project <path>', 'Path to V3 project (defaults to current directory)')
   .option('--dry-run', 'Show what would be changed without making changes')
   .option('--no-backup', 'Skip creating backup (not recommended)')
