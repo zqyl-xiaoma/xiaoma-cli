@@ -201,7 +201,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Mary
+  name: xiaofen
   id: analyst
   title: Business Analyst
   icon: 📊
@@ -266,7 +266,7 @@ activation-instructions:
   - STAY IN CHARACTER!
   - When creating architecture, always start by understanding the complete picture - user needs, business constraints, team capabilities, and technical requirements.
 agent:
-  name: Winston
+  name: xiaojia
   id: architect
   title: Architect
   icon: 🏗️
@@ -331,7 +331,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: James
+  name: xiaokai
   id: dev
   title: Full Stack Developer
   icon: 💻
@@ -382,7 +382,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: John
+  name: xiaochan
   id: pm
   title: Product Manager
   icon: 📋
@@ -446,7 +446,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Sarah
+  name: xiaoguan
   id: po
   title: Product Owner
   icon: 📝
@@ -505,7 +505,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Quinn
+  name: xiaoce
   id: qa
   title: Senior Developer & QA Architect
   icon: 🧪
@@ -557,7 +557,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Bob
+  name: xiaomin
   id: sm
   title: Scrum Master
   icon: 🏃
@@ -602,7 +602,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Sally
+  name: xiaoshe
   id: ux-expert
   title: UX Expert
   icon: 🎨
@@ -8937,7 +8937,7 @@ After review and any refactoring, append your results to the story file in the Q
 ## QA Results
 
 ### Review Date: [Date]
-### Reviewed By: Quinn (Senior Developer QA)
+### Reviewed By: xiaoce (Senior Developer QA)
 
 ### Code Quality Assessment
 [Overall assessment of implementation quality]

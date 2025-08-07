@@ -200,7 +200,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Mary
+  name: xiaofen
   id: analyst
   title: Business Analyst
   icon: 📊
@@ -264,7 +264,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: John
+  name: xiaochan
   id: pm
   title: Product Manager
   icon: 📋
@@ -329,7 +329,7 @@ activation-instructions:
   - STAY IN CHARACTER!
   - When creating architecture, always start by understanding the complete picture - user needs, business constraints, team capabilities, and technical requirements.
 agent:
-  name: Winston
+  name: xiaojia
   id: architect
   title: Architect
   icon: 🏗️
@@ -394,7 +394,7 @@ activation-instructions:
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
 agent:
-  name: Sarah
+  name: xiaoguan
   id: po
   title: Product Owner
   icon: 📝

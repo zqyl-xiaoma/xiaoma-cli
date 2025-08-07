@@ -39,7 +39,7 @@ After V1 proved that the BMad method was solid and repeatable, 2 key ideas emerg
 
 And the introduction that really supercharged everything in my opinion, the web versions! There were 4 hard coded web variants hand crafted - and we saw that we could, dirt cheap, work with agents for hours in the massive context of Gemini - from a PRD generating PM, through to an architect and even an analyst that could help us do extensive market research and brain storming.
 
-What I never expected is the names would stick, and people would keep the sample names I made that I thought people would configure. But now 4 version is, people refer to Mary, and John, and Bob! And when I randomly changed the names, I got A LOT of feedback! These have become trusted allies people are relying on, including for me!
+What I never expected is the names would stick, and people would keep the sample names I made that I thought people would configure. But now 4 version is, people refer to xiaofen, and xiaochan, and xiaomin! And when I randomly changed the names, I got A LOT of feedback! These have become trusted allies people are relying on, including for me!
 
 ## V1
 
