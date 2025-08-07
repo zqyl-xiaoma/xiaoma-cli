@@ -1,17 +1,17 @@
 {
-  "name": "bmad-method",
-  "version": "4.35.0",
-  "description": "XiaoMa Web installer - AI-powered Agile development framework",
+  "name": "@zeyue0329/xiaoma-cli-installer",
+  "version": "1.0.1",
+  "description": "XiaoMa Cli installer - AI-powered Agile development framework",
   "main": "lib/installer.js",
   "bin": {
-    "bmad": "./bin/bmad.js",
-    "bmad-method": "./bin/bmad.js"
+    "xiaoma-installer": "./bin/xiaoma.js",
+    "xiaoma-cli-installer": "./bin/xiaoma.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "bmad",
+    "xiaoma",
     "agile",
     "ai",
     "development",
@@ -34,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmad-team/bmad-method.git"
+    "url": "https://github.com/zqyl-xiaoma/xiaoma-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/bmad-team/bmad-method/issues"
+    "url": "https://github.com/zqyl-xiaoma/xiaoma-cli/issues"
   },
-  "homepage": "https://github.com/bmad-team/bmad-method#readme"
+  "homepage": "https://github.com/zqyl-xiaoma/xiaoma-cli#readme"
 }

@@ -242,8 +242,8 @@ As your project grows and the code starts to build consistent patterns, coding s
 ## Getting Help
 
 - **Discord Community**: [Join Discord](https://discord.gg/gk8jAdXWmj)
-- **GitHub Issues**: [Report bugs](https://github.com/xiaoma-web/xiaoma-web/issues)
-- **Documentation**: [Browse docs](https://github.com/xiaoma-web/xiaoma-web/docs)
+- **GitHub Issues**: [Report bugs](https://github.com/zqyl-xiaoma/xiaoma-cli/issues)
+- **Documentation**: [Browse docs](https://github.com/zqyl-xiaoma/xiaoma-cli/docs)
 - **YouTube**: [XiaoMaCode Channel](https://www.youtube.com/@XiaoMaCode)
 
 ## Conclusion

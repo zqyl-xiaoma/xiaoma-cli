@@ -1,68 +1,57 @@
-# 🚀 XIAOMA-WEB 快速启动指南
+# 🚀 XIAOMA-CLI 快速启动指南
 
-## 项目已成功启动！✅
+## 项目已成功发布！✅
 
-### 📦 当前状态
-- ✅ 项目依赖已安装
-- ✅ 构建系统正常运行
-- ✅ 所有配置文件验证通过
-- ✅ CLI工具正常工作
-- ✅ dist文件已生成
+### 📦 NPM包信息
+- 📦 **包名**: `@zeyue0329/xiaoma-cli`
+- 🔖 **版本**: `1.0.0`
+- 🌐 **仓库**: https://www.npmjs.com/package/@zeyue0329/xiaoma-cli
+- ✅ 已发布到npm仓库，可全球下载使用
 
 ### 🎯 项目概述
-XIAOMA-WEB是一个通用AI代理框架，支持敏捷AI驱动开发。提供专业的AI代理团队来处理项目的各个环节。
+XIAOMA-CLI是一个通用AI代理框架，支持敏捷AI驱动开发。提供专业的AI代理团队来处理项目的各个环节。
 
-## 🔧 可用命令
+## 🔧 安装和使用
 
-### 🚨 重要说明
-目前XIAOMA-WEB还没有发布到npm仓库，所以需要使用本地安装方式。
-
-### 方法1: 使用本地路径（推荐）
+### ⚡ 快速开始（推荐）
 ```bash
-# 在任何目录中直接使用完整路径
-npx /Users/liueryang/Documents/gitlab/xiaoma-web install
+# 直接使用，无需安装（推荐方式）
+npx @zeyue0329/xiaoma-cli install
 
 # 查看帮助
-npx /Users/liueryang/Documents/gitlab/xiaoma-web install --help
+npx @zeyue0329/xiaoma-cli --help
+
+# 查看版本
+npx @zeyue0329/xiaoma-cli --version
 ```
 
-### 方法2: 全局链接方式
+### 🏗️ 全局安装方式
 ```bash
-# 1. 首先在xiaoma-web项目目录中创建全局链接（仅需一次）
-cd /Users/liueryang/Documents/gitlab/xiaoma-web
-npm link
+# 全局安装
+npm install -g @zeyue0329/xiaoma-cli
 
-# 2. 然后在任何目录中使用
-xiaoma-web --version
-xiaoma-web --help
-xiaoma-web install
+# 安装后可直接使用命令
+xiaoma-cli install
+xiaoma-cli --help
+xiaoma-cli --version
+```
+
+### 📚 CLI命令详情
+```bash
+# 项目安装 - 在任意项目目录中运行
+npx @zeyue0329/xiaoma-cli install
+
+# 查看可用代理列表
+npx @zeyue0329/xiaoma-cli list:agents
+
+# 验证配置文件
+npx @zeyue0329/xiaoma-cli validate
 
 # 构建所有bundles
-npm run build
+npx @zeyue0329/xiaoma-cli build
 
-# 验证配置
-npm run validate
-
-# 列出可用代理
-npm run list:agents
-
-# 代码扁平化
-npm run flatten
-```
-
-### 开发命令
-```bash
-# 只构建代理bundles
-npm run build:agents
-
-# 只构建团队bundles  
-npm run build:teams
-
-# 安装到项目（使用本地版本）
-npm run install:xiaoma
-
-# 格式化markdown
-npm run format
+# 代码库扁平化（用于AI分析）
+npx @zeyue0329/xiaoma-cli flatten
 ```
 
 ## 📁 项目结构
@@ -89,10 +78,13 @@ XIAOMA-WEB/
 
 ### 方式1: 在新项目中安装使用
 ```bash
-# 在你的项目目录中
+# 进入你的项目目录
+cd /path/to/your/project
 
+# 运行安装命令
+npx @zeyue0329/xiaoma-cli install
 
-# 选择安装选项：
+# 按提示选择：
 # - Complete XiaoMa Core (完整安装)
 # - Single Agent (单个代理)
 
@@ -100,14 +92,15 @@ XIAOMA-WEB/
 # - Cursor, Claude Code, Windsurf, VS Code等
 ```
 
-### 方式2: 使用Web UI Bundles
+### 方式2: 获取Web UI Bundles
 ```bash
-# 获取团队bundle文件
-cp dist/teams/team-fullstack.txt /path/to/upload/
+# 首先在本地生成bundle文件
+npx @zeyue0329/xiaoma-cli build
 
-# 上传到以下平台之一：
+# bundle文件将生成在项目的dist目录中
+# 然后可以上传到以下平台：
 # - Gemini (推荐用于规划阶段)
-# - ChatGPT
+# - ChatGPT  
 # - Claude Web UI
 ```
 
@@ -134,16 +127,17 @@ cp dist/teams/team-fullstack.txt /path/to/upload/
 ## ⚡ 快速开始
 
 ### IDE开发流程
-1. 在项目中安装：`npx xiaoma-web install`
+1. 在项目中安装：`npx @zeyue0329/xiaoma-cli install`
 2. 选择IDE集成
 3. 使用 `@代理名` 或 `/代理名` 调用代理
 4. 按照SM → Dev循环进行开发
 
 ### Web UI规划流程
-1. 使用 `dist/teams/team-fullstack.txt`
-2. 上传到Gemini/ChatGPT
-3. 创建PRD和架构文档
-4. 切换到IDE进行开发
+1. 运行：`npx @zeyue0329/xiaoma-cli build` 生成bundle文件
+2. 使用 `dist/teams/team-fullstack.txt`
+3. 上传到Gemini/ChatGPT
+4. 创建PRD和架构文档
+5. 切换到IDE进行开发
 
 ## 📚 文档资源
 
@@ -154,20 +148,32 @@ cp dist/teams/team-fullstack.txt /path/to/upload/
 
 ## 🔗 相关链接
 
-- **GitHub**: https://github.com/xiaoma-web/xiaoma-web
-- **Issues**: https://github.com/xiaoma-web/xiaoma-web/issues
+- **NPM包**: https://www.npmjs.com/package/@zeyue0329/xiaoma-cli
+- **GitHub**: https://github.com/zqyl-xiaoma/xiaoma-cli
+- **Issues**: https://github.com/zqyl-xiaoma/xiaoma-cli/issues
 - **Discord**: https://discord.gg/gk8jAdXWmj
 
 ## 🎉 开始使用
 
-项目已完全准备就绪！选择您喜欢的方式开始使用XIAOMA-WEB框架。
+项目已成功发布到npm！现在全球用户都可以通过简单的命令使用XIAOMA-CLI框架。
 
 **建议第一次使用：**
 1. 阅读[用户指南](xiaoma-core/user-guide.md)了解工作流程
-2. 在测试项目中运行 `npx xiaoma-web install` 
+2. 在测试项目中运行 `npx @zeyue0329/xiaoma-cli install` 
 3. 选择您的IDE进行集成
 4. 开始您的第一个AI辅助开发项目！
 
+**🚀 一键开始：**
+```bash
+# 创建新项目目录
+mkdir my-ai-project && cd my-ai-project
+
+# 安装XIAOMA-CLI框架
+npx @zeyue0329/xiaoma-cli install
+
+# 开始您的AI驱动开发之旅！
+```
+
 ---
 
-**🎊 祝您使用愉快！XIAOMA-WEB团队为您的开发之旅保驾护航！**npx xiaoma-web install
+**🎊 祝您使用愉快！XIAOMA-CLI团队为您的开发之旅保驾护航！**

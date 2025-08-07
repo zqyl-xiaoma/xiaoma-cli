@@ -1,7 +1,7 @@
 {
-  "name": "xiaoma-web",
-  "version": "4.35.0",
-  "description": "XiaoMa Method: Universal AI Agent Framework",
+  "name": "@zeyue0329/xiaoma-cli",
+  "version": "1.0.1",
+  "description": "XiaoMa Cli: Universal AI Agent Framework",
   "main": "tools/cli.js",
   "bin": {
     "xiaoma": "tools/xiaoma-npx-wrapper.js",
@@ -57,7 +57,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiaoma-web/xiaoma-web.git"
+    "url": "git+https://github.com/zqyl-xiaoma/xiaoma-cli.git"
   },
   "engines": {
     "node": ">=20.0.0"
