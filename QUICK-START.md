@@ -90,7 +90,7 @@ XIAOMA-WEB/
 ### 方式1: 在新项目中安装使用
 ```bash
 # 在你的项目目录中
-npx xiaoma-web install
+
 
 # 选择安装选项：
 # - Complete XiaoMa Core (完整安装)
@@ -170,4 +170,4 @@ cp dist/teams/team-fullstack.txt /path/to/upload/
 
 ---
 
-**🎊 祝您使用愉快！XIAOMA-WEB团队为您的开发之旅保驾护航！**
+**🎊 祝您使用愉快！XIAOMA-WEB团队为您的开发之旅保驾护航！**npx xiaoma-web install
