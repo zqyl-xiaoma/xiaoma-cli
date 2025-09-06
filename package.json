@@ -1,6 +1,6 @@
 {
   "name": "@zeyue0329/xiaoma-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "XiaoMa Cli: Universal AI Agent Framework",
   "main": "tools/cli.js",
   "bin": {

@@ -1,6 +1,6 @@
 {
   "name": "@zeyue0329/xiaoma-cli-installer",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "XiaoMa Cli installer - AI-powered Agile development framework",
   "main": "lib/installer.js",
   "bin": {
