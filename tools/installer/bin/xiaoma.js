@@ -33,12 +33,12 @@ try {
 
 program
   .version(version)
-  .description('XiaoMa Web installer - Universal AI agent framework for any domain');
+  .description('XiaoMa CLI installer - Universal AI agent framework for any domain');
 
 program
   .command('install')
-  .description('Install XiaoMa Web agents and tools')
-  .option('-f, --full', 'Install complete XiaoMa Web')
+  .description('Install XiaoMa CLI agents and tools')
+  .option('-f, --full', 'Install complete XiaoMa CLI')
   .option('-x, --expansion-only', 'Install only expansion packs (no xiaoma-core)')
   .option('-d, --directory <path>', 'Installation directory')
   .option('-i, --ide <ide...>', 'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, kilo, cline, gemini, qwen-code, github-copilot, other)')
@@ -78,7 +78,7 @@ program
 
 program
   .command('update')
-  .description('Update existing XiaoMa Web installation')
+  .description('Update existing XiaoMa CLI installation')
   .option('--force', 'Force update, overwriting modified files')
   .option('--dry-run', 'Show what would be updated without making changes')
   .action(async () => {
@@ -132,12 +132,12 @@ async function promptInstallation() {
   
   // Display ASCII logo
   console.log(chalk.bold.cyan(`
-██╗  ██╗██╗ █████╗  ██████╗ ███╗   ███╗ █████╗       ██╗    ██╗███████╗██████╗ 
-╚██╗██╔╝██║██╔══██╗██╔═══██╗████╗ ████║██╔══██╗      ██║    ██║██╔════╝██╔══██╗
- ╚███╔╝ ██║███████║██║   ██║██╔████╔██║███████║█████╗██║ █╗ ██║█████╗  ██████╔╝
- ██╔██╗ ██║██╔══██║██║   ██║██║╚██╔╝██║██╔══██║╚════╝██║███╗██║██╔══╝  ██╔══██╗
-██╔╝ ██╗██║██║  ██║╚██████╔╝██║ ╚═╝ ██║██║  ██║      ╚███╔███╔╝███████╗██████╔╝
-╚═╝  ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝       ╚══╝╚══╝ ╚══════╝╚═════╝ 
+██╗  ██╗██╗ █████╗  ██████╗ ███╗   ███╗ █████╗        ██████╗██╗     ██╗
+╚██╗██╔╝██║██╔══██╗██╔═══██╗████╗ ████║██╔══██╗      ██╔════╝██║     ██║
+ ╚███╔╝ ██║███████║██║   ██║██╔████╔██║███████║█████╗██║     ██║     ██║
+ ██╔██╗ ██║██╔══██║██║   ██║██║╚██╔╝██║██╔══██║╚════╝██║     ██║     ██║
+██╔╝ ██╗██║██║  ██║╚██████╔╝██║ ╚═╝ ██║██║  ██║      ╚██████╗███████╗██║
+╚═╝  ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝       ╚═════╝╚══════╝╚═╝
   `));
   
   console.log(chalk.bold.magenta('🚀 Universal AI Agent Framework for Any Domain'));
@@ -150,7 +150,7 @@ async function promptInstallation() {
     {
       type: 'input',
       name: 'directory',
-      message: 'Enter the full path to your project directory where XiaoMa Web should be installed:',
+      message: 'Enter the full path to your project directory where XiaoMa CLI should be installed:',
       default: process.cwd(),
       validate: (input) => {
         if (!input.trim()) {
@@ -242,8 +242,61 @@ async function promptInstallation() {
   answers.installType = selectedItems.includes('xiaoma-core') ? 'full' : 'expansion-only';
   answers.expansionPacks = selectedItems.filter(item => item !== 'xiaoma-core');
 
-  // Set default sharding configuration if installing XiaoMa core
+  // Ask for project type and tech stack if installing XiaoMa core
   if (selectedItems.includes('xiaoma-core')) {
+    console.log(chalk.cyan('\n🏗️  Project Configuration'));
+    
+    // Ask for project type (new vs existing)
+    const { projectType } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'projectType',
+        message: 'What type of project are you working on?',
+        choices: [
+          {
+            name: 'New project (Greenfield) - Starting from scratch',
+            value: 'greenfield'
+          },
+          {
+            name: 'Existing project (Brownfield) - Adding to existing codebase',
+            value: 'brownfield'
+          }
+        ],
+        default: 'greenfield'
+      }
+    ]);
+    
+    // Ask for tech stack type
+    const { techStackType } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'techStackType',
+        message: 'What type of application are you building?',
+        choices: [
+          {
+            name: 'Full-stack application - Complete web application with frontend and backend',
+            value: 'fullstack'
+          },
+          {
+            name: 'Frontend-only - Pure frontend application (SPA, static site, etc.)',
+            value: 'ui'
+          },
+          {
+            name: 'Backend-only - API services, microservices, or backend systems',
+            value: 'service'
+          }
+        ],
+        default: 'fullstack'
+      }
+    ]);
+    
+    // Store the project configuration
+    answers.projectType = projectType;
+    answers.techStackType = techStackType;
+    answers.workflowType = `${projectType}-${techStackType}`;
+    
+    console.log(chalk.dim(`Selected workflow: ${answers.workflowType}`));
+    
     console.log(chalk.cyan('\n📋 Document Organization Settings'));
     console.log(chalk.dim('Using recommended defaults: PRD and architecture will be sharded into multiple files.\n'));
     

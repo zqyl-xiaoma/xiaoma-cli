@@ -223,7 +223,7 @@ class Installer {
   }
 
   async performFreshInstall(config, installDir, spinner, options = {}) {
-    spinner.text = "Installing XiaoMa Web...";
+    spinner.text = "Installing XiaoMa CLI...";
 
     let files = [];
 
@@ -689,6 +689,9 @@ class Installer {
         installType: manifest.install_type,
         agent: manifest.agent,
         directory: installDir,
+        projectType: manifest.project_type,
+        techStackType: manifest.tech_stack_type,
+        workflowType: manifest.workflow_type,
         ides: newConfig?.ides || manifest.ides_setup || [],
       };
 
@@ -795,7 +798,7 @@ class Installer {
   }
 
   async performReinstall(config, installDir, spinner) {
-    spinner.start("Preparing to reinstall XiaoMa Web...");
+    spinner.start("Preparing to reinstall XiaoMa CLI...");
 
     // Remove existing .xiaoma-core
     const bmadCorePath = path.join(installDir, ".xiaoma-core");
@@ -815,7 +818,7 @@ class Installer {
   }
 
   showSuccessMessage(config, installDir, options = {}) {
-    console.log(chalk.green("\n✓ XiaoMa Web installed successfully!\n"));
+    console.log(chalk.green("\n✓ XiaoMa CLI installed successfully!\n"));
 
     const ides = config.ides || (config.ide ? [config.ide] : []);
     if (ides.length > 0) {
@@ -881,11 +884,11 @@ class Installer {
     if (config.installType === "single-agent") {
       console.log(
         chalk.dim(
-          "\nNeed other agents? Run: npx xiaoma-web install --agent=<name>"
+          "\nNeed other agents? Run: npx xiaoma-cli install --agent=<name>"
         )
       );
       console.log(
-        chalk.dim("Need everything? Run: npx xiaoma-web install --full")
+        chalk.dim("Need everything? Run: npx xiaoma-cli install --full")
       );
     }
 
@@ -929,7 +932,7 @@ class Installer {
     }
 
     console.log(
-      chalk.dim("\nInstall with: npx xiaoma-web install --agent=<id>\n")
+      chalk.dim("\nInstall with: npx xiaoma-cli install --agent=<id>\n")
     );
   }
 
@@ -954,7 +957,7 @@ class Installer {
     }
 
     console.log(
-      chalk.dim("Install with: npx xiaoma-web install --full --expansion-packs <id>\n")
+      chalk.dim("Install with: npx xiaoma-cli install --full --expansion-packs <id>\n")
     );
   }
 
