@@ -1,11 +1,11 @@
 {
   "name": "@zeyue0329/xiaoma-cli",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "XiaoMa Cli: Universal AI Agent Framework",
   "main": "tools/cli.js",
   "bin": {
     "xiaoma": "tools/xiaoma-npx-wrapper.js",
-    "xiaoma-web": "tools/xiaoma-npx-wrapper.js"
+    "xiaoma-cli": "tools/xiaoma-npx-wrapper.js"
   },
   "scripts": {
     "build": "node tools/cli.js build",
